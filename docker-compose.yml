@@ -1,0 +1,15 @@
+web:
+  image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2
+  command: '/bin/bash -c "sleep 5 && cd /app/src && mpirun --host db,he python ConCurrentLDA.py"'
+  container_name: web
+#  links:
+#    - db:db
+#    - he:he
+db:
+  image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2 
+  command: '/usr/sbin/sshd -D'
+  container_name: db
+he:
+  image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2 
+  command: '/usr/sbin/sshd -D'
+  container_name: he
