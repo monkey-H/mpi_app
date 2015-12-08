@@ -15,3 +15,5 @@ he:
   image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2 
   command: '/usr/sbin/sshd -D'
   container_name: he
+  ports:
+    - '4210'
