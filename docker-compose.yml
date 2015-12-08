@@ -9,6 +9,8 @@ db:
   image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2 
   command: '/usr/sbin/sshd -D'
   container_name: db
+  ports:
+    - '4200'
 he:
   image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2 
   command: '/usr/sbin/sshd -D'
