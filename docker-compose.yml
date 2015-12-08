@@ -1,6 +1,6 @@
 web:
   image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2
-  command: 'sleep 5 && cd /app/src && mpirun --host db,he python ConCurrentLDA.py'
+  command: '/bin/bash -c "sleep 5 && cd /app/src && mpirun --host db,he python ConCurrentLDA.py"'
   container_name: web
 #  links:
 #    - db:db
