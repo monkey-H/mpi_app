@@ -1,6 +1,6 @@
 master:
   image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2
-  command: '/bin/bash -c "sleep 5 && cd /app/src && mpirun --host slave,node python ConCurrentLDA.py"'
+  command: '/bin/bash -c "sleep 5 && cd /app/src && mpirun --host {{slave}},{{node}} python ConCurrentLDA.py"'
   container_name: master
 #  links:
 #    - db:db
