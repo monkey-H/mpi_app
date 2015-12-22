@@ -1,18 +1,18 @@
 master:
-  image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2
+  image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
   command: '/bin/bash -c "sleep 5 && cd /mpi && mpirun --host {{slave1}},{{slave2}} mpi_hello && /usr/sbin/sshd -D"'
   container_name: master
 #  links:
 #    - db:db
 #    - he:he
 slave1:
-  image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2 
+  image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
   command: '/usr/sbin/sshd -D'
   container_name: slave1
   ports:
     - '4200'
 slave2:
-  image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2 
+  image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
   command: '/usr/sbin/sshd -D'
   container_name: slave2
   ports:
