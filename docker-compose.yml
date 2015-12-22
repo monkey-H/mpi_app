@@ -1,19 +1,19 @@
 master:
   image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2
-  command: '/bin/bash -c "sleep 5 && cd /app/src && mpirun --host {{slave}},{{node}} python ConCurrentLDA.py"'
+  command: '/bin/bash -c "sleep 5 && cd /mpi && mpirun --host {{slave1}},{{slave2}} mpi_hello && /usr/sbin/sshd -D"'
   container_name: master
 #  links:
 #    - db:db
 #    - he:he
-slave:
+slave1:
   image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2 
   command: '/usr/sbin/sshd -D'
-  container_name: slave
+  container_name: slave1
   ports:
     - '4200'
-node:
+slave2:
   image: docker.iwanna.xyz:5000/hmonkey/wuyong:v2 
   command: '/usr/sbin/sshd -D'
-  container_name: node
+  container_name: slave2
   ports:
     - '4210'
