@@ -1,12 +1,15 @@
 master:
   image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
-  command: '/bin/bash -c "sleep 5 && cd /mpi && mpirun --host {{slave1}},{{slave2}} mpi_hello && /usr/sbin/sshd -D"'
+  command: /usr/sbin/sshd -D
   container_name: master
+  links:
+    - slave1
+    - slave2
 slave1:
   image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
-  command: '/usr/sbin/sshd -D'
+  command: /usr/sbin/sshd -D
   container_name: slave1
 slave2:
   image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
-  command: '/usr/sbin/sshd -D'
+  command: /usr/sbin/sshd -D
   container_name: slave2
