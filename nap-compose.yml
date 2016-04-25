@@ -1,6 +1,6 @@
 master:
   image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
-  command: /bin/bash -c "/usr/sbin/sshd -D"
+  command: /bin/bash -c "/usr/sbin/sshd -D && service"
   container_name: master
   links:
     - slave1
