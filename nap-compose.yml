@@ -5,6 +5,8 @@ master:
   links:
     - slave1
     - slave2
+  environment:
+    - hello: 'nju'
 slave1:
   image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
   command: /usr/sbin/sshd -D
