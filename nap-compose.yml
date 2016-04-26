@@ -2,6 +2,18 @@ master:
   image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
   command: /bin/bash -c "service ssh start"
   container_name: master
+  mem_limit: 32m
+  ports:
+    - 9000:32500:udp
+    - 8080:32501
+    - 8000::tcp
+    - 9001
+  network: test
+  volumes:
+    - /container/path:/host_path:rw
+    - /container_path::ro
+    - /container/path2:/host_path
+    - /container/path3
   links:
     - slave1
     - slave2
