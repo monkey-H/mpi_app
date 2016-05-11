@@ -1,19 +1,9 @@
 master:
   image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
-  command: /bin/bash -c "service ssh start"
+  command: /bin/bash -c "sleep 5 && cd /mpi && mpirun --host {{slave1}},{{slave2}} mpi_hello && /usr/sbin/sshd -D"
   container_name: master
   mem_limit: 32m
-  ports:
-    - 9000:32500:udp
-    - 8080:32501
-    - 8000::tcp
-    - 9001
   network: test
-  volumes:
-    - /container/path:/host_path:rw
-    - /container_path::ro
-    - /container/path2:/host_path
-    - /container/path3
   links:
     - slave1
     - slave2
@@ -21,9 +11,9 @@ master:
     - hello='nju'
 slave1:
   image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
-  command: /bin/bash -c "service ssh start"
+  command: /usr/sbin/sshd -D
   container_name: slave1
 slave2:
   image: docker.iwanna.xyz:5000/hmonkey/mpi:v1
-  command: /bin/bash -c "service ssh start"
+  command: /usr/sbin/sshd -D
   container_name: slave2
