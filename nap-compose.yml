@@ -3,7 +3,7 @@ master:
   command: /bin/bash -c "sleep 5 && cd /mpi && mpirun --host {{slave1}},{{slave2}} mpi_hello && /usr/sbin/sshd -D"
   container_name: master
   mem_limit: 32m
-  network: test
+  network: nap
   links:
     - slave1
     - slave2
